@@ -1,0 +1,6 @@
+---
+applications:
+- name: Map-broker
+  memory: 512M
+  path: target/MapServiceBroker-0.0.1-SNAPSHOT.jar
+  buildpack: java_buildpack
