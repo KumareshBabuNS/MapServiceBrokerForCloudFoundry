@@ -12,6 +12,11 @@ import javax.persistence.Table;
 @Entity
 @Table(name="service_instances")
 @JsonAutoDetect(getterVisibility = JsonAutoDetect.Visibility.NONE)
+/**
+ * 
+ * @author Santosh_Kar
+ *
+ */
 public class ServiceInstance {
     @Id
     private String id;

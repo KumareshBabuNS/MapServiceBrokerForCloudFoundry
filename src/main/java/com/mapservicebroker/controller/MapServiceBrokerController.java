@@ -29,6 +29,13 @@ import com.mapservicebroker.repository.ServiceRepository;
 import com.mapservicebroker.service.MapService;
 
 @RestController
+/**
+ * This controller is for the Service Broker having catalog, create binding,
+ * delete binding.
+ * 
+ * @author Santosh_Kar
+ *
+ */
 public class MapServiceBrokerController {
 
 	Log log = LogFactory.getLog(MapServiceBrokerController.class);

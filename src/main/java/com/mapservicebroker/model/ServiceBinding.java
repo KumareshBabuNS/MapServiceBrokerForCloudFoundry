@@ -9,6 +9,11 @@ import javax.persistence.*;
 @Entity
 @Table(name = "service_bindings")
 @JsonAutoDetect(getterVisibility = JsonAutoDetect.Visibility.NONE)
+/**
+ * 
+ * @author Santosh_Kar
+ *
+ */
 public class ServiceBinding {
 
     @Id

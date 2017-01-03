@@ -4,6 +4,12 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "plans")
+/**
+ * Entity class for service broker plan
+ * 
+ * @author Santosh_Kar
+ *
+ */
 public class Plan {
 
     @Id
