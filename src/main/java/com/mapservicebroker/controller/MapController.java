@@ -28,6 +28,12 @@ public class MapController {
     public ResponseEntity<String> put(@PathVariable("instanceId") String instanceId,
                                       @PathVariable("key") String key,
                                       @RequestBody String value) {
+    	
+    	System.out.println("-----------------In Put -------------------------------");
+    	System.out.println("instanceId = "+instanceId);
+    	System.out.println("key = "+key);
+    	System.out.println("value = "+value);
+    	System.out.println("------------------------------------------------");
         service.put(instanceId, key, value);
         return new ResponseEntity<>("{}", HttpStatus.CREATED);
     }
@@ -49,14 +55,20 @@ public class MapController {
     }
 
     @RequestMapping(value = "/mapservice/{instanceId}/{key}", method = RequestMethod.DELETE)
-    public ResponseEntity<String> delete(@PathVariable("instanceId") String instanceId,
+    public ResponseEntity<Object> delete(@PathVariable("instanceId") String instanceId,
                                          @PathVariable("key") String key) {
+    	
+    	Object deletedValue = null;
+    	
+    	System.out.println("-------------Before Delete -----------------------------------");
+    	System.out.println(service.findAll());
         Object result = service.get(instanceId, key);
         if (result != null) {
+        	deletedValue = service.get(instanceId, key);
             service.delete(instanceId, key);
             return new ResponseEntity<>("{}", HttpStatus.OK);
         } else {
-            return new ResponseEntity<>("{}", HttpStatus.GONE);
+            return new ResponseEntity<>(deletedValue, HttpStatus.GONE);
         }
     }
 
