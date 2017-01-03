@@ -35,6 +35,11 @@ public class MapController {
     @RequestMapping(value = "/mapservice/{instanceId}/{key}", method = RequestMethod.GET)
     public ResponseEntity<Object> get(@PathVariable("instanceId") String instanceId,
                                       @PathVariable("key") String key) {
+    	
+    	System.out.println("------------------------------------------------");
+    	System.out.println(service.findAll());
+    	System.out.println("------------------------------------------------");
+    	
         Object result = service.get(instanceId, key);
         if (result != null) {
             return new ResponseEntity<>(result, HttpStatus.OK);

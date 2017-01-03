@@ -8,6 +8,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.client.RestTemplate;
 
 import com.mapservicebroker.controller.MapController;
 
@@ -31,7 +32,7 @@ public class MapServiceBrokerApplicationTests {
 	
 	@Test
 	public void contextLoads() {
-		System.out.println(controller);
+		RestTemplate restTemplate = new RestTemplate();
 	}
 
 }

@@ -29,6 +29,7 @@ public class MapService {
 	}
 
 	public Object get(String id, Object key) {
+		System.out.println(hashMaps);
 		Map<Object, Object> mapInstance = hashMaps.get(id);
 		return mapInstance.get(key);
 	}
@@ -36,6 +37,10 @@ public class MapService {
 	public void delete(String id, Object key) {
 		Map<Object, Object> mapInstance = hashMaps.get(id);
 		mapInstance.remove(key);
+	}
+	
+	public Map<String, Map<Object, Object>> findAll(){
+		return hashMaps;
 	}
 
 }
