@@ -2,7 +2,7 @@
 This is a service which is used as a service broker in the PCF. 
 
 to use:
-git clone https://github.com/cloudfoundry-community/haash-broker
+git clone https://github.com/santoshkar/MapServiceBrokerForCloudFoundry.git
 mvn clean install
 cf push --random-route
 cf apps
