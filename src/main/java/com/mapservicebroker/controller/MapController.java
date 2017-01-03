@@ -1,6 +1,7 @@
 package com.mapservicebroker.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -17,15 +18,16 @@ import com.mapservicebroker.service.MapService;
  * @author Santosh_Kar
  *
  */
+@ComponentScan(basePackages={"com.mapservicebroker"})
 public class MapController {
 
 
     @Autowired
-    MapService service;
+    private MapService service;
 
 
     @RequestMapping(value = "/mapservice/{instanceId}/{key}", method = RequestMethod.PUT)
-    public ResponseEntity<String> put(@PathVariable("instanceId") String instanceId,
+    public ResponseEntity<Object> put(@PathVariable("instanceId") String instanceId,
                                       @PathVariable("key") String key,
                                       @RequestBody String value) {
     	
@@ -35,18 +37,18 @@ public class MapController {
     	System.out.println("value = "+value);
     	System.out.println("------------------------------------------------");
         service.put(instanceId, key, value);
-        return new ResponseEntity<>("{}", HttpStatus.CREATED);
+        return new ResponseEntity<>(service.findAll(), HttpStatus.CREATED);
     }
 
     @RequestMapping(value = "/mapservice/{instanceId}/{key}", method = RequestMethod.GET)
     public ResponseEntity<Object> get(@PathVariable("instanceId") String instanceId,
                                       @PathVariable("key") String key) {
-    	
     	System.out.println("------------------------------------------------");
     	System.out.println(service.findAll());
-    	System.out.println("------------------------------------------------");
-    	
         Object result = service.get(instanceId, key);
+        System.out.println("Object found : "+result);
+        System.out.println("------------------------------------------------");
+        
         if (result != null) {
             return new ResponseEntity<>(result, HttpStatus.OK);
         } else {
@@ -62,6 +64,7 @@ public class MapController {
     	
     	System.out.println("-------------Before Delete -----------------------------------");
     	System.out.println(service.findAll());
+    	System.out.println("------------------------------------------------");
         Object result = service.get(instanceId, key);
         if (result != null) {
         	deletedValue = service.get(instanceId, key);

@@ -3,14 +3,15 @@ package com.mapservicebroker.service;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-@Service
 /**
  * 
  * @author Santosh_Kar
  *
  */
+@Service("mapService")
 public class MapService {
 
 	private Map<String, Map<Object, Object>> hashMaps = new HashMap<>();
